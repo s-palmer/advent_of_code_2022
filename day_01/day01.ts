@@ -48,7 +48,6 @@ let arrOfNum = []
 
 const elvesRecordSize = Object.keys(elvesRecord).length
 
-
 for (let i = 1; i < elvesRecordSize; i++) {
   arrOfNum = elvesRecord[i].map(str => {
     return Number(str)
@@ -74,3 +73,22 @@ console.log(currentMaximum)
 // In the example above, the top three Elves are the fourth Elf (with 24000 Calories), then the third Elf (with 11000 Calories), then the fifth Elf (with 10000 Calories). The sum of the Calories carried by these three elves is 45000.
 
 // Find the top three Elves carrying the most Calories. How many Calories are those Elves carrying in total?
+
+let sortedArray = []
+let elfArray = []
+
+for (let i = 1; i < elvesRecordSize; i++) {
+  elfArray = elvesRecord[i].map(str => {
+    return Number(str)
+  })
+
+  sortedArray.push(elfArray.reduce((acc, value) => {
+    return acc + value
+  }, 0))
+
+  sortedArray.sort(function(a, b) {return b-a})
+}
+
+const topElves = (sortedArray[0] + sortedArray[1] + sortedArray[2])
+
+console.log(topElves)
