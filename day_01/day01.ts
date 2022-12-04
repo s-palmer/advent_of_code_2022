@@ -36,6 +36,7 @@ for (let i = 0; i < inputToArray.length; i++) {
   if (inputToArray[i] != "") {
     tempElfArray.push(inputToArray[i])
   } else {
+
     elvesRecord[elfNumber] = tempElfArray
     tempElfArray = []
     elfNumber++
@@ -49,9 +50,7 @@ let arrOfNum = []
 const elvesRecordSize = Object.keys(elvesRecord).length
 
 for (let i = 1; i < elvesRecordSize; i++) {
-  arrOfNum = elvesRecord[i].map(str => {
-    return Number(str)
-  })
+  arrOfNum = elvesRecord[i].map(str => parseInt(str, 10))
 
   tempMaximum = arrOfNum.reduce((acc, value) => {
     return acc + value

@@ -35,9 +35,7 @@ let tempMaximum = 0;
 let arrOfNum = [];
 const elvesRecordSize = Object.keys(elvesRecord).length;
 for (let i = 1; i < elvesRecordSize; i++) {
-    arrOfNum = elvesRecord[i].map(str => {
-        return Number(str);
-    });
+    arrOfNum = elvesRecord[i].map(str => parseInt(str, 10));
     tempMaximum = arrOfNum.reduce((acc, value) => {
         return acc + value;
     }, 0);
