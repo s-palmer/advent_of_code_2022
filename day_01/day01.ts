@@ -27,24 +27,22 @@ type Elves = Record<number, Elf>
 
 const elvesRecord: Elves = {}
 
-const inputToArray: Array<string> = input.split('\n')
+const inputAsArray: Array<string> = input.split('\n')
 
 let elfNumber = 1
 let tempElfArray: Elf = []
 
-for (let i = 0; i < inputToArray.length; i++) {
-  if (inputToArray[i] != "") {
-    tempElfArray.push(inputToArray[i])
+inputAsArray.forEach((item) => {
+  if (item !== "") {
+    tempElfArray.push(item);
   } else {
-
-    elvesRecord[elfNumber] = tempElfArray
-    tempElfArray = []
-    elfNumber++
+    elvesRecord[elfNumber] = tempElfArray;
+    tempElfArray = [];
+    elfNumber++;
   }
-}
+});
 
 let currentMaximum: number = 0
-let tempMaximum: number = 0
 let arrOfNum = []
 
 const elvesRecordSize = Object.keys(elvesRecord).length
@@ -52,13 +50,9 @@ const elvesRecordSize = Object.keys(elvesRecord).length
 for (let i = 1; i < elvesRecordSize; i++) {
   arrOfNum = elvesRecord[i].map(str => parseInt(str, 10))
 
-  tempMaximum = arrOfNum.reduce((acc, value) => {
-    return acc + value
-  }, 0)
+  const tempMaximum = Math.max(...arrOfNum);
 
-  if (tempMaximum > currentMaximum) {
-    currentMaximum = tempMaximum
-  }
+  currentMaximum = Math.max(currentMaximum, tempMaximum);
 }
 
 console.log(currentMaximum)
@@ -85,7 +79,7 @@ for (let i = 1; i < elvesRecordSize; i++) {
     return acc + value
   }, 0))
 
-  sortedArray.sort(function(a, b) {return b-a})
+  sortedArray.sort(function (a, b) { return b - a })
 }
 
 const topElves = (sortedArray[0] + sortedArray[1] + sortedArray[2])
